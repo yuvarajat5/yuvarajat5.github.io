@@ -70,6 +70,7 @@
             font-size: 16px;
             transition: 0.3s;
             position: relative;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -187,20 +188,6 @@
             transform: skew(2deg);
         }
 
-        .info-item {
-            margin: 20px 0;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-
-        .info-item::before {
-            content: '▹';
-            color: #00ff88;
-            margin-right: 15px;
-            font-size: 24px;
-        }
-
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -251,12 +238,28 @@
             transition: 0.3s;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .cta-button:hover {
             background: #00ff88;
             color: #0a0a0a;
             box-shadow: 0 0 30px #00ff88;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        #galleryImage {
+            width: 100%;
+            max-width: 500px;
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -287,6 +290,7 @@
         <nav>
             <a href="#home">HOME</a>
             <a href="#about">ABOUT</a>
+            <a href="#gallery">GALLERY</a>
             <a href="#contact">CONTACT</a>
         </nav>
     </header>
@@ -341,11 +345,17 @@
 
     <section id="gallery">
         <h2 class="section-title">[ GALLERY ]</h2>
+        
+        <div class="upload-section">
+            <input type="file" id="imageUpload" class="file-input" accept="image/*">
+            <label for="imageUpload" class="cta-button">UPLOAD YOUR PHOTO</label>
+        </div>
+
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
             <div style="position: relative; display: inline-block; border: 3px solid #00ff88; border-radius: 15px; overflow: hidden; box-shadow: 0 0 40px rgba(0, 255, 136, 0.5); transform: rotate(-2deg); transition: 0.3s;" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-2deg) scale(1)'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Leonardo_DiCaprio_2014.jpg" alt="Leonardo DiCaprio" style="width: 100%; max-width: 500px; display: block;">
+                <img id="galleryImage" src="https://via.placeholder.com/500x600/0a0a0a/00ff88?text=Upload+Your+Photo" alt="Yuvaraj">
                 <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); padding: 20px; color: #00ff88; font-size: 20px; text-shadow: 0 0 10px #00ff88;">
-                    Leonardo DiCaprio
+                    Yuvaraj - Monda
                 </div>
             </div>
         </div>
@@ -378,6 +388,18 @@
     </section>
 
     <script>
+        // Image upload functionality
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('galleryImage').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         // Custom cursor
         const cursor = document.querySelector('.cursor');
         const follower = document.querySelector('.cursor-follower');
@@ -448,9 +470,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = this.getAttribute('href');
+                if (target && target !== '#') {
+                    document.querySelector(target).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
