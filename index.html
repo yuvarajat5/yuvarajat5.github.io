@@ -12,266 +12,403 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1624 100%);
             color: #fff;
             overflow-x: hidden;
-            cursor: none;
         }
 
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #00ff88;
-            border-radius: 50%;
+        /* Animated background */
+        .bg-animation {
             position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: 0.1s;
-            box-shadow: 0 0 20px #00ff88;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 136, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 213, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(0, 89, 255, 0.1) 0%, transparent 50%);
+            animation: bgShift 15s ease infinite;
         }
 
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: 0.3s;
+        @keyframes bgShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0, 136, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 136, 255, 0.2);
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 10px #00ff88;
+            background: linear-gradient(135deg, #0088ff, #00d5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 136, 255, 0.5);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
         }
 
         nav a {
-            margin-left: 30px;
             text-decoration: none;
             color: #fff;
-            font-size: 16px;
-            transition: 0.3s;
-            position: relative;
-            cursor: pointer;
-        }
-
-        nav a:hover {
-            color: #00ff88;
-            text-shadow: 0 0 10px #00ff88;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
 
-        .glitch {
-            font-size: 80px;
-            font-weight: bold;
-            text-transform: uppercase;
+        nav a:hover {
+            background: linear-gradient(135deg, #0088ff, #00d5ff);
+            box-shadow: 0 0 20px rgba(0, 136, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 40px;
+            text-align: center;
             position: relative;
-            animation: glitch 1s infinite;
         }
 
-        @keyframes glitch {
-            0% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            15% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
-            }
-            16% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                    -0.05em -0.05em 0 #fffc00;
-            }
-            49% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                    -0.05em -0.05em 0 #fffc00;
-            }
-            50% {
-                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                    0 -0.04em 0 #fffc00;
-            }
-            99% {
-                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                    0 -0.04em 0 #fffc00;
-            }
-            100% {
-                text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
-                    -0.04em -0.025em 0 #fffc00;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .particles {
+        .glitch {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #0088ff, #00d5ff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 3s linear infinite;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #00d5ff;
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(0, 213, 255, 0.5);
+        }
+
+        .floating-shapes {
             position: absolute;
             width: 100%;
             height: 100%;
+            overflow: hidden;
             z-index: -1;
         }
 
-        .particle {
+        .shape {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #00ff88;
             border-radius: 50%;
-            animation: float 10s infinite;
+            background: linear-gradient(135deg, rgba(0, 136, 255, 0.2), rgba(0, 213, 255, 0.2));
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
         }
 
         @keyframes float {
             0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
+                transform: translateY(0) rotate(0deg);
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
+            50% {
+                transform: translateY(-30px) rotate(180deg);
             }
         }
 
         section {
-            min-height: 100vh;
-            padding: 100px 50px;
+            padding: 60px 20px;
             position: relative;
         }
 
         .section-title {
-            font-size: 48px;
-            margin-bottom: 50px;
-            color: #00ff88;
+            font-size: 36px;
+            margin-bottom: 40px;
             text-align: center;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            background: linear-gradient(135deg, #0088ff, #00d5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(0, 255, 136, 0.05);
-            padding: 40px;
-            border: 2px solid #00ff88;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-            transform: skew(-2deg);
+            background: rgba(0, 136, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 136, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 136, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
 
-        .about-content > * {
-            transform: skew(2deg);
+        .about-content h3 {
+            color: #00d5ff;
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 213, 255, 0.5);
+        }
+
+        .about-content h4 {
+            color: #0088ff;
+            font-size: 18px;
+            margin: 20px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 136, 255, 0.3);
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #ccc;
+            margin: 10px 0;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .contact-card {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(252, 0, 255, 0.1));
+            background: linear-gradient(135deg, rgba(0, 136, 255, 0.1), rgba(0, 213, 255, 0.1));
             padding: 30px;
-            border-radius: 15px;
-            border: 2px solid #00ff88;
-            transition: 0.3s;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 136, 255, 0.3);
             text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .contact-card:hover {
-            transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 136, 255, 0.4);
+            border-color: #0088ff;
         }
 
         .contact-icon {
             font-size: 40px;
             margin-bottom: 15px;
-            color: #00ff88;
-        }
-
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            opacity: 0.1;
+            filter: drop-shadow(0 0 10px rgba(0, 136, 255, 0.6));
         }
 
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: transparent;
-            border: 2px solid #00ff88;
-            color: #00ff88;
+            background: linear-gradient(135deg, #0088ff, #00d5ff);
+            border: none;
+            border-radius: 30px;
+            color: #fff;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: bold;
             margin-top: 30px;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 136, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-button:hover {
-            background: #00ff88;
-            color: #0a0a0a;
-            box-shadow: 0 0 30px #00ff88;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 136, 255, 0.6);
         }
 
+        .gallery-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #0088ff;
+            box-shadow: 0 15px 50px rgba(0, 136, 255, 0.4);
+            transition: all 0.3s;
+        }
+
+        .image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 136, 255, 0.6);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 136, 255, 0.9));
+            padding: 20px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
             .glitch {
-                font-size: 40px;
+                font-size: 36px;
             }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
             header {
-                padding: 20px 20px;
+                padding: 12px 15px;
             }
+
+            .logo {
+                font-size: 20px;
+            }
+
             nav a {
-                margin-left: 15px;
-                font-size: 14px;
+                font-size: 12px;
+                padding: 6px 10px;
             }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-content {
+                padding: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
             section {
-                padding: 80px 20px;
+                padding: 40px 15px;
+            }
+
+            .shape {
+                display: none;
             }
         }
+
+        @media (max-width: 480px) {
+            .glitch {
+                font-size: 28px;
+            }
+
+            nav {
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 11px;
+                padding: 5px 8px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    
-    <canvas class="matrix-bg" id="matrix"></canvas>
+    <div class="bg-animation"></div>
 
     <header>
-        <div class="logo">&lt;YUV/&gt;</div>
+        <div class="logo">⚡ YUVARAJA</div>
         <nav>
             <a href="#home">HOME</a>
             <a href="#about">ABOUT</a>
@@ -281,92 +418,83 @@
     </header>
 
     <section class="hero" id="home">
-        <div class="particles" id="particles"></div>
-        <div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="hero-content">
             <h1 class="glitch">YUVARAJA</h1>
-            <p style="text-align: center; font-size: 24px; color: #00ff88; margin-top: 20px;">
-                &lt; MCA Student | Developer | Innovator /&gt;
-            </p>
+            <p class="subtitle">MCA Student | Developer | Innovator</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
         </div>
     </section>
 
     <section id="about">
-        <h2 class="section-title">[ ABOUT ME ]</h2>
+        <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <h3 style="color: #00ff88; font-size: 28px; margin-bottom: 30px; text-align: center;">Professional Profile</h3>
+            <h3>Professional Profile</h3>
             
-            <div style="margin-bottom: 40px;">
-                <h4 style="color: #00ff88; font-size: 20px; margin-bottom: 15px; border-bottom: 2px solid rgba(0, 255, 136, 0.3); padding-bottom: 10px;">Education</h4>
-                <div style="margin-left: 20px; line-height: 1.8;">
-                    <p style="margin: 10px 0;"><strong>Master of Computer Applications (MCA)</strong></p>
-                    <p style="margin: 5px 0 20px 20px; color: #aaa;">GM University, Davangere</p>
-                    
-                    <p style="margin: 10px 0;"><strong>Bachelor of Computer Applications (BCA)</strong></p>
-                    <p style="margin: 5px 0; color: #aaa;">Don Bosco Degree College, Chitradurga</p>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 40px;">
-                <h4 style="color: #00ff88; font-size: 20px; margin-bottom: 15px; border-bottom: 2px solid rgba(0, 255, 136, 0.3); padding-bottom: 10px;">Personal Information</h4>
-                <div style="margin-left: 20px; line-height: 1.8;">
-                    <p style="margin: 10px 0;"><strong>Age:</strong> 21 years</p>
-                    <p style="margin: 10px 0;"><strong>Marital Status:</strong> Married with depression</p>
-                </div>
-            </div>
-
             <div>
-                <h4 style="color: #00ff88; font-size: 20px; margin-bottom: 15px; border-bottom: 2px solid rgba(0, 255, 136, 0.3); padding-bottom: 10px;">Professional Focus</h4>
-                <p style="margin-left: 20px; line-height: 1.8; color: #ccc;">
+                <h4>🎓 Education</h4>
+                <p><strong>Master of Computer Applications (MCA)</strong></p>
+                <p style="margin-left: 20px; color: #aaa;">GM University, Davangere</p>
+                <br>
+                <p><strong>Bachelor of Computer Applications (BCA)</strong></p>
+                <p style="margin-left: 20px; color: #aaa;">Don Bosco Degree College, Chitradurga</p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h4>👤 Personal Information</h4>
+                <p><strong>Age:</strong> 21 years</p>
+                <p><strong>Status:</strong> Married</p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h4>💼 Professional Focus</h4>
+                <p>
                     Dedicated to advancing in the field of computer science with a strong foundation in application development. 
                     Committed to continuous learning and applying innovative solutions to complex technological challenges.
                 </p>
             </div>
 
             <div style="text-align: center;">
-                <a href="https://github.com/yuvarajat5" class="cta-button" target="_blank">VIEW GITHUB PROFILE</a>
+                <a href="https://github.com/yuvarajat5" class="cta-button" target="_blank">View GitHub Profile</a>
             </div>
         </div>
     </section>
 
     <section id="gallery">
-        <h2 class="section-title">[ GALLERY ]</h2>
-
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <div style="position: relative; display: inline-block; border: 3px solid #00ff88; border-radius: 15px; overflow: hidden; box-shadow: 0 0 40px rgba(0, 255, 136, 0.5); transform: rotate(-2deg); transition: 0.3s;" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-2deg) scale(1)'">
-                <img style="width: 100%; max-width: 500px; height: auto; display: block;" src="https://raw.githubusercontent.com/yuvarajat5/photos/main/Screenshot%202025-12-07%20130158.png" alt="Yuvaraja Profile">
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); padding: 20px; color: #00ff88; font-size: 20px; text-shadow: 0 0 10px #00ff88;">
-                    
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-container">
+            <div class="image-wrapper">
+                <img src="https://raw.githubusercontent.com/yuvarajat5/photos/main/Screenshot%202025-12-07%20130158.png" alt="Yuvaraja Profile">
+                <div class="image-overlay">
+                    Yuvaraja | MCA Student
                 </div>
-            </div>
-
-            <div style="margin-top: 30px; padding: 20px; background: rgba(0, 255, 136, 0.1); border: 2px solid #00ff88; border-radius: 10px;">
-                <h3 style="color: #00ff88; margin-bottom: 15px;"></h3>
-                <p style="color: #fff; line-height: 1.8;">
-                    
-                </p>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2 class="section-title">[ GET IN TOUCH ]</h2>
+        <h2 class="section-title">Get In Touch</h2>
         <div class="contact-grid">
-            <div class="contact-card">
+            <div class="contact-card fade-in">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
                 <p>yuvarajat834@gmail.com</p>
             </div>
-            <div class="contact-card">
+            <div class="contact-card fade-in">
                 <div class="contact-icon">📱</div>
                 <h3>Phone</h3>
                 <p>9008857960</p>
             </div>
-            <div class="contact-card">
+            <div class="contact-card fade-in">
                 <div class="contact-icon">💻</div>
                 <h3>GitHub</h3>
                 <p>yuvarajat5</p>
             </div>
-            <div class="contact-card">
+            <div class="contact-card fade-in">
                 <div class="contact-icon">🎓</div>
                 <h3>University</h3>
                 <p>GM University</p>
@@ -375,84 +503,36 @@
     </section>
 
     <script>
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                follower.style.left = e.clientX + 'px';
-                follower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        // Particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Matrix background
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const letters = 'YUVARAJAMCA01';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00ff88';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 35);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = this.getAttribute('href');
-                if (target && target !== '#') {
-                    document.querySelector(target).scrollIntoView({
-                        behavior: 'smooth'
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
