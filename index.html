@@ -12,9 +12,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1f1f1f 100%);
-            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: #343541;
+            color: #ececf1;
             overflow-x: hidden;
         }
 
@@ -27,9 +27,8 @@
             left: 0;
             z-index: -1;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(96, 96, 96, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(128, 128, 128, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(80, 80, 80, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(64, 65, 79, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 53, 65, 0.3) 0%, transparent 50%);
             animation: bgShift 15s ease infinite;
         }
 
@@ -47,19 +46,17 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(26, 26, 26, 0.95);
+            background: #202123;
             backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(128, 128, 128, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #40414f;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
             font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #808080, #b0b0b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(128, 128, 128, 0.3);
+            font-weight: 600;
+            color: #10a37f;
+            letter-spacing: 0.5px;
         }
 
         nav {
@@ -69,19 +66,17 @@
 
         nav a {
             text-decoration: none;
-            color: #e0e0e0;
+            color: #ececf1;
             font-size: 14px;
-            padding: 8px 15px;
-            border-radius: 20px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
         }
 
         nav a:hover {
-            background: linear-gradient(135deg, #707070, #909090);
-            box-shadow: 0 0 20px rgba(128, 128, 128, 0.4);
-            transform: translateY(-2px);
+            background: #40414f;
+            color: #fff;
         }
 
         .hero {
@@ -93,10 +88,12 @@
             padding: 80px 20px 40px;
             text-align: center;
             position: relative;
+            background: linear-gradient(180deg, #343541 0%, #444654 100%);
         }
 
         .hero-content {
             animation: fadeInUp 1s ease;
+            max-width: 800px;
         }
 
         @keyframes fadeInUp {
@@ -111,29 +108,18 @@
         }
 
         .glitch {
-            font-size: 48px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #808080, #b0b0b0, #808080);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: textShine 3s linear infinite;
+            font-size: 56px;
+            font-weight: 700;
+            color: #ececf1;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        @keyframes textShine {
-            to {
-                background-position: 200% center;
-            }
+            letter-spacing: 1px;
         }
 
         .subtitle {
-            font-size: 18px;
-            color: #a0a0a0;
+            font-size: 20px;
+            color: #10a37f;
             margin-top: 10px;
-            text-shadow: 0 0 10px rgba(160, 160, 160, 0.3);
+            font-weight: 500;
         }
 
         .floating-shapes {
@@ -147,7 +133,7 @@
         .shape {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(128, 128, 128, 0.15), rgba(96, 96, 96, 0.15));
+            background: rgba(16, 163, 127, 0.1);
             animation: float 20s infinite ease-in-out;
         }
 
@@ -193,44 +179,43 @@
             font-size: 36px;
             margin-bottom: 40px;
             text-align: center;
-            background: linear-gradient(135deg, #808080, #b0b0b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: #ececf1;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(64, 64, 64, 0.15);
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid rgba(128, 128, 128, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            background: #444654;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #565869;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .about-content h3 {
-            color: #b0b0b0;
-            font-size: 24px;
-            margin-bottom: 25px;
+            color: #10a37f;
+            font-size: 28px;
+            margin-bottom: 30px;
             text-align: center;
-            text-shadow: 0 0 10px rgba(176, 176, 176, 0.3);
+            font-weight: 600;
         }
 
         .about-content h4 {
-            color: #909090;
-            font-size: 18px;
-            margin: 20px 0 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(128, 128, 128, 0.3);
+            color: #ececf1;
+            font-size: 20px;
+            margin: 25px 0 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #565869;
+            font-weight: 600;
         }
 
         .about-content p {
             line-height: 1.8;
-            color: #c0c0c0;
+            color: #c5c5d2;
             margin: 10px 0;
+            font-size: 15px;
         }
 
         .contact-grid {
@@ -242,47 +227,58 @@
         }
 
         .contact-card {
-            background: linear-gradient(135deg, rgba(80, 80, 80, 0.2), rgba(96, 96, 96, 0.2));
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid rgba(128, 128, 128, 0.3);
+            background: #444654;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #565869;
             text-align: center;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
         }
 
         .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3);
-            border-color: #808080;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(16, 163, 127, 0.2);
+            border-color: #10a37f;
+            background: #4a4b5f;
+        }
+
+        .contact-card h3 {
+            color: #ececf1;
+            font-weight: 600;
+            margin: 15px 0 10px;
+            font-size: 18px;
+        }
+
+        .contact-card p {
+            color: #c5c5d2;
+            font-size: 15px;
         }
 
         .contact-icon {
             font-size: 40px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 10px rgba(128, 128, 128, 0.4));
+            margin-bottom: 10px;
+            filter: grayscale(20%);
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, #707070, #909090);
+            padding: 14px 32px;
+            background: #10a37f;
             border: none;
-            border-radius: 30px;
+            border-radius: 6px;
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight: 600;
             margin-top: 30px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(16, 163, 127, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(128, 128, 128, 0.4);
+            background: #0d8c6a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 163, 127, 0.4);
         }
 
         .gallery-container {
@@ -294,16 +290,18 @@
         .image-wrapper {
             position: relative;
             display: inline-block;
-            border-radius: 20px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 3px solid #808080;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            border: 2px solid #565869;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.3s;
+            background: #444654;
         }
 
         .image-wrapper:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(128, 128, 128, 0.4);
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(16, 163, 127, 0.2);
+            border-color: #10a37f;
         }
 
         .image-wrapper img {
@@ -318,22 +316,21 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(64, 64, 64, 0.9));
+            background: linear-gradient(transparent, rgba(32, 33, 35, 0.95));
             padding: 20px;
             color: #fff;
             font-size: 18px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
         }
 
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             .glitch {
-                font-size: 36px;
+                font-size: 40px;
             }
 
             .subtitle {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             header {
@@ -345,16 +342,16 @@
             }
 
             nav a {
-                font-size: 12px;
-                padding: 6px 10px;
+                font-size: 13px;
+                padding: 6px 12px;
             }
 
             .section-title {
-                font-size: 28px;
+                font-size: 30px;
             }
 
             .about-content {
-                padding: 20px;
+                padding: 25px;
             }
 
             .contact-grid {
@@ -373,7 +370,7 @@
 
         @media (max-width: 480px) {
             .glitch {
-                font-size: 28px;
+                font-size: 32px;
             }
 
             nav {
@@ -381,12 +378,12 @@
             }
 
             nav a {
-                font-size: 11px;
-                padding: 5px 8px;
+                font-size: 12px;
+                padding: 5px 10px;
             }
 
             .cta-button {
-                padding: 12px 30px;
+                padding: 12px 28px;
                 font-size: 14px;
             }
         }
@@ -438,10 +435,10 @@
             <div>
                 <h4>🎓 Education</h4>
                 <p><strong>Master of Computer Applications (MCA)</strong></p>
-                <p style="margin-left: 20px; color: #aaa;">GM University, Davangere</p>
+                <p style="margin-left: 20px; color: #b4b4c3;">GM University, Davangere</p>
                 <br>
                 <p><strong>Bachelor of Computer Applications (BCA)</strong></p>
-                <p style="margin-left: 20px; color: #aaa;">Don Bosco Degree College, Chitradurga</p>
+                <p style="margin-left: 20px; color: #b4b4c3;">Don Bosco Degree College, Chitradurga</p>
             </div>
 
             <div style="margin-top: 30px;">
