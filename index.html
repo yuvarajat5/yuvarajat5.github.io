@@ -35,7 +35,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://github.com/yuvarajat5/pppphoto/blob/main/WIN_20251023_19_09_44_Pro.jpg?raw=true');
+            background-image: url('https://raw.githubusercontent.com/yuvarajat5/pppphoto/main/WIN_20251023_19_09_44_Pro.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -396,6 +396,11 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .image-wrapper:hover {
@@ -408,6 +413,12 @@
             max-width: 500px;
             height: auto;
             display: block;
+        }
+
+        .image-loading {
+            color: #888;
+            font-size: 14px;
+            padding: 20px;
         }
 
         .image-caption {
@@ -694,8 +705,11 @@
     <section id="gallery">
         <h2 class="section-title">Gallery</h2>
         <div class="gallery-container">
-            <div class="image-wrapper">
-                <img src="https://github.com/yuvarajat5/pppphoto/blob/main/WIN_20251023_19_09_44_Pro.jpg?raw=true" alt="Yuvaraja Profile">
+            <div class="image-wrapper" id="imageWrapper">
+                <img src="https://raw.githubusercontent.com/yuvarajat5/pppphoto/main/WIN_20251023_19_09_44_Pro.jpg" 
+                     alt="Yuvaraja Profile" 
+                     id="galleryImage"
+                     onerror="handleImageError(this)">
             </div>
             <p class="image-caption">two ugly starks</p>
         </div>
@@ -723,11 +737,17 @@
                 <div class="contact-icon">💼</div>
                 <h3>LinkedIn</h3>
                 <p>yuvaraj-t-b420132b9</p>
-            </a>
+            </div>
         </div>
     </section>
 
     <script>
+        // Image error handling
+        function handleImageError(img) {
+            const wrapper = document.getElementById('imageWrapper');
+            wrapper.innerHTML = '<div class="image-loading">📷<br>Image temporarily unavailable<br><small>Please upload to Imgur for reliable hosting</small></div>';
+        }
+
         // Typing animation
         const texts = [
             "Building the future with code...",
